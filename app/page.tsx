@@ -64,21 +64,13 @@ export default function HomePage() {
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#070709]/80 border-b border-amber-500/15 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* Logo 區塊 */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-300 via-amber-500 to-amber-700 p-[1.5px] shadow-lg shadow-amber-500/25 group-hover:shadow-amber-500/50 transition-all duration-300">
-              <div className="w-full h-full bg-[#0d0e12] rounded-[10px] flex items-center justify-center">
-                <Car className="w-6 h-6 text-amber-400 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-black text-2xl tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-amber-100 via-amber-400 to-amber-500 uppercase">
-                VOGUE
-              </span>
-              <span className="text-[9px] tracking-[0.3em] text-amber-400/90 -mt-1 font-bold uppercase">
-                MOTORSHOP
-              </span>
-            </div>
+          {/* Logo 區塊：已改用 public/logo.png */}
+          <Link href="/" className="flex items-center group">
+            <img 
+              src="/logo.png" 
+              alt="VOGUE MOTORSHOP Logo" 
+              className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
+            />
           </Link>
 
           {/* 導覽連結 */}
@@ -561,7 +553,11 @@ export default function HomePage() {
       <footer className="border-t border-white/10 bg-[#040406] py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-3">
-            <span className="font-black text-lg tracking-widest text-amber-400 uppercase">VOGUE MOTORSHOP</span>
+            <img 
+              src="/logo.png" 
+              alt="VOGUE MOTORSHOP Logo" 
+              className="h-8 w-auto object-contain" 
+            />
             <span className="hidden sm:inline text-slate-700">|</span>
             <span className="text-slate-400">香港北角建華街15號地下</span>
           </div>
