@@ -28,7 +28,7 @@ import {
   Navigation
 } from 'lucide-react';
 
-// 自訂 Instagram SVG 圖示（解決 lucide-react 沒有匯出 Instagram 的問題）
+// 自訂 Instagram SVG 圖示
 const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg 
     className={className} 
@@ -48,8 +48,8 @@ const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 export default function HomePage() {
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
 
-  // Google Maps 地址搜尋 / 導航連結
-  const googleMapUrl = "https://www.google.com/maps/search/?api=1&query=香港北角建華街15號地下";
+  // Google Maps 地址搜尋 / 導航連結 (更新為堡壘街地址)
+  const googleMapUrl = "https://www.google.com/maps/search/?api=1&query=香港北角堡壘街10-16號A舖";
   const instagramUrl = "https://www.instagram.com/voguemotorshop";
 
   return (
@@ -64,7 +64,7 @@ export default function HomePage() {
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#070709]/80 border-b border-amber-500/15 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* Logo 區塊：已改用 public/logo.png */}
+          {/* Logo 區塊 */}
           <Link href="/" className="flex items-center group">
             <img 
               src="/logo.png" 
@@ -83,22 +83,39 @@ export default function HomePage() {
 
           {/* 右側聯絡、社群與預約 */}
           <div className="flex items-center gap-3">
+            {/* Instagram (含文字顯示 voguemotorshop) */}
             <a 
               href={instagramUrl} 
               target="_blank" 
               rel="noreferrer"
-              className="p-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-xs font-bold transition"
+              title="Instagram @voguemotorshop"
+            >
+              <InstagramIcon className="w-4 h-4" />
+              <span>@voguemotorshop</span>
+            </a>
+
+            {/* 行動裝置圖示版 Instagram */}
+            <a 
+              href={instagramUrl} 
+              target="_blank" 
+              rel="noreferrer"
+              className="lg:hidden p-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition"
               title="Instagram @voguemotorshop"
             >
               <InstagramIcon className="w-4 h-4" />
             </a>
+
+            {/* 電話符號 + 電話號碼 61860112 */}
             <a 
               href="tel:61860112" 
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-bold tracking-wider transition backdrop-blur-sm"
             >
               <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>6186 0112</span>
+              <span>61860112</span>
             </a>
+
+            {/* WhatsApp 按鈕與 Message 符號 */}
             <a 
               href="https://wa.me/85261860112" 
               target="_blank" 
@@ -112,7 +129,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* 🚀 【頂部全寬度門面 Banner 區塊（純淨版）】 */}
+      {/* 🚀 【頂部全寬度門面 Banner 區塊】 */}
       <section className="pt-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="relative rounded-3xl overflow-hidden p-[1px] bg-gradient-to-r from-amber-500/50 via-orange-500/30 to-amber-500/50 shadow-2xl shadow-amber-500/20 group">
           <div className="relative h-64 sm:h-96 md:h-[420px] w-full rounded-[23px] overflow-hidden bg-black">
@@ -121,10 +138,8 @@ export default function HomePage() {
               alt="VOGUE MOTORSHOP 店面 Banner" 
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
-            {/* 輕微漸層遮罩 */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#070709]/60 via-transparent to-black/30" />
 
-            {/* Banner 頂部標籤 */}
             <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/40 bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold">
                 <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
@@ -168,11 +183,11 @@ export default function HomePage() {
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white/[0.03] border border-amber-500/30 hover:bg-amber-500/10 text-amber-300 font-bold text-sm tracking-wider backdrop-blur-md transition-all"
               >
                 <MapPin className="w-4 h-4 text-amber-400" />
-                <span>香港北角建華街15號地下</span>
+                <span>北角堡壘街10-16號A舖</span>
               </a>
             </div>
 
-            {/* 儀表板數據 HUD (Stats) */}
+            {/* 儀表板數據 HUD */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
               <div className="space-y-1">
                 <div className="text-2xl sm:text-3xl font-black text-amber-400">10,000+</div>
@@ -217,7 +232,7 @@ export default function HomePage() {
                       <span className="text-xs text-slate-300">門市地址</span>
                     </div>
                     <div className="flex items-center gap-1 text-xs font-bold text-amber-300 group-hover:text-amber-200">
-                      <span>北角建華街15號地下</span>
+                      <span>北角堡壘街10-16號A舖</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </div>
                   </a>
@@ -233,7 +248,21 @@ export default function HomePage() {
                       <span className="text-xs text-slate-300">Instagram</span>
                     </div>
                     <div className="flex items-center gap-1 text-xs font-bold text-amber-300 group-hover:text-amber-200">
-                      <span>@voguemotorshop</span>
+                      <span>voguemotorshop</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </div>
+                  </a>
+
+                  <a 
+                    href="tel:61860112"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.02] hover:bg-amber-500/10 border border-white/5 hover:border-amber-500/30 transition group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-4 h-4 text-amber-400" />
+                      <span className="text-xs text-slate-300">查詢電話</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs font-bold text-amber-300 group-hover:text-amber-200">
+                      <span>61860112</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </div>
                   </a>
@@ -249,10 +278,12 @@ export default function HomePage() {
 
                 <a 
                   href="https://wa.me/85261860112"
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-emerald-600/20 border border-emerald-500/40 hover:bg-emerald-600/30 text-emerald-300 font-bold text-xs tracking-wider uppercase transition shadow-lg shadow-emerald-950/50"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>發送相片即時評估報價</span>
+                  <span>WhatsApp 發送相片即時報價</span>
                 </a>
 
               </div>
@@ -346,6 +377,8 @@ export default function HomePage() {
 
               <a 
                 href="https://wa.me/85261860112" 
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
               >
                 <span>了解詳情</span>
@@ -433,14 +466,16 @@ export default function HomePage() {
 
               <a 
                 href="https://wa.me/85261860112" 
+                target="_blank"
+                rel="noreferrer"
                 className={`w-full py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition ${
                   pkg.popular 
                     ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-slate-950 hover:from-amber-300 hover:to-amber-500 shadow-lg shadow-amber-500/20' 
                     : 'bg-white/[0.05] border border-white/10 hover:bg-white/10 text-white'
                 }`}
               >
+                <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp 查詢套餐優惠</span>
-                <ChevronRight className="w-4 h-4" />
               </a>
             </div>
           ))}
@@ -520,7 +555,7 @@ export default function HomePage() {
                     <input 
                       type="tel" 
                       required 
-                      placeholder="例如: 6186 0112"
+                      placeholder="例如: 61860112"
                       className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-amber-400 transition"
                     />
                   </div>
@@ -559,7 +594,7 @@ export default function HomePage() {
               className="h-8 w-auto object-contain" 
             />
             <span className="hidden sm:inline text-slate-700">|</span>
-            <span className="text-slate-400">香港北角建華街15號地下</span>
+            <span className="text-slate-400">香港北角堡壘街10-16號A舖</span>
           </div>
 
           <div className="flex items-center gap-6 text-slate-300">
@@ -569,9 +604,12 @@ export default function HomePage() {
             </a>
             <a href={instagramUrl} target="_blank" rel="noreferrer" className="hover:text-amber-400 transition flex items-center gap-1">
               <InstagramIcon className="w-3.5 h-3.5 text-amber-400" />
-              <span>Instagram</span>
+              <span>voguemotorshop</span>
             </a>
-            <a href="tel:61860112" className="hover:text-amber-400 transition">6186 0112</a>
+            <a href="tel:61860112" className="hover:text-amber-400 transition flex items-center gap-1">
+              <Phone className="w-3.5 h-3.5 text-amber-400" />
+              <span>61860112</span>
+            </a>
           </div>
 
           <div className="text-center md:text-right text-slate-600">
